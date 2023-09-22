@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "cypress": "^13.1.0"
+  },
+  "dependencies": {
+    "@zebrunner/javascript-agent-cypress": "^1.2.1"
+  }
+}
