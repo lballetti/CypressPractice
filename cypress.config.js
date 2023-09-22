@@ -4,7 +4,7 @@ const zbrPlugin = require('@zebrunner/javascript-agent-cypress/lib/plugin');
 module.exports = defineConfig({
   includeShadowDom : true,
   chromeWebSecurity : false,
-  retries : 20,
+  retries : 5,
 
   //Zebrunner configuration
   reporter: '@zebrunner/javascript-agent-cypress',
