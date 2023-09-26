@@ -25,11 +25,17 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 require('@zebrunner/javascript-agent-cypress/lib/commands/commands');
 Cypress.Commands.add('login',(username,password)=>{
-        cy.visit('https://www.reddit.com/login/')
+        cy.get('.items-center').contains('Log In').click();
+        cy.wait(2000)
         cy.intercept('POST','/login').as('login');
-        cy.get('#loginUsername').type(username); //QATestingAccount
-        cy.get('#loginPassword').type(password); //QATestingPassword
-        cy.get('.AnimatedForm button').click();
-        // cy.wait('@login').its('response.statusCode').should('eq',400);
-        cy.visit('https://www.reddit.com/')
+        cy.get('iframe.iframe').should('be.visible').its('0.contentDocument').its('body').should('not.be.undefined').then(cy.wrap).as('iframe');
+        cy.get('@iframe').find('input#loginUsername').type(username);
+        cy.get('@iframe').find('input#loginPassword').type(password+'{enter}');
+        // cy.visit('https://www.reddit.com/login/')
+        // cy.intercept('POST','/login').as('login');
+        // cy.get('#loginUsername').type(username); //QATestingAccount
+        // cy.get('#loginPassword').type(password+"{enter}"); //QATestingPassword
+        // cy.get('.AnimatedForm button').click();
+        cy.wait('@login').its('response.statusCode').should('eq',200);
+        cy.wait(10000)
 })

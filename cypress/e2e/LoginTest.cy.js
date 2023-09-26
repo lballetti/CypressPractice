@@ -1,4 +1,7 @@
 /// <reference types="Cypress" />
+
+const BasePage = require("../pages/BasePage");
+
 beforeEach(function () {
         cy.visit('https://www.reddit.com');
 })
@@ -9,7 +12,7 @@ it('login fail', function () {
         // .then((href) => {
         //   cy.visit(href)
         // });
-        cy.get('.items-center').contains('Log In').click();
+        BasePage.getLoginButton().click();
         cy.wait(2000)
         cy.intercept('POST','/login').as('login');
         cy.get('iframe.iframe').should('be.visible').its('0.contentDocument').its('body').should('not.be.undefined').then(cy.wrap).as('iframe');
