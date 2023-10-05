@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-const BasePage = require("../pages/BasePage");
+const BasePage = require("../../pages/reddit/BasePage");
 
 beforeEach(function () {
         cy.visit('https://www.reddit.com');
