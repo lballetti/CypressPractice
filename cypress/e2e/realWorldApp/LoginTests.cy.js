@@ -23,3 +23,11 @@ it('Submit button disabled', function(){
     LoginPage.getUsernameInput().clear()
     LoginPage.getSubmitButton().should('be.disabled')
 })
+
+it('Login correct credentials', function(){
+    const username = Cypress.env('username')
+    const password = Cypress.env('password')
+    LoginPage.getUsernameInput().type(username)
+    LoginPage.getPasswordInput().type(password+'{enter}')
+    
+})
