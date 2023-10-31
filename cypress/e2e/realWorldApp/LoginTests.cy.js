@@ -28,6 +28,7 @@ it('Login correct credentials', function(){
     const username = Cypress.env('username')
     const password = Cypress.env('password')
     LoginPage.getUsernameInput().type(username)
-    LoginPage.getPasswordInput().type(password+'{enter}')
-    
+    LoginPage.getPasswordInput().type(password)
+    LoginPage.getSubmitButton().click()
+    cy.wait(10000)
 })
