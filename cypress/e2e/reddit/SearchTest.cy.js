@@ -10,6 +10,6 @@ beforeEach(function () {
         cy.login('QATestingAccount','QATestingPassword');
         cy.get('reddit-search-large').find('span.input-container').click().wait(2000);
         BasePage.getSearchBar().type('text{enter}',{force:true});
-        .type('r/argentina{enter}');
+        //.type('r/argentina{enter}');
         cy.wait(3000)
     });
